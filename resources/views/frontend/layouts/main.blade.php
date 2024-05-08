@@ -113,7 +113,7 @@
             <div class="space30 clearfix"></div>
 
             <!-- TESTIMONIAL -->
-            @include('frontend.layouts.newarrivals')
+            @include('frontend.layouts.testimonial')
             
 
             <!-- LATEST PRODUCTS -->

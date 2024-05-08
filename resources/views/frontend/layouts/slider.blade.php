@@ -5,7 +5,7 @@
                             <!-- SLIDE  -->
                             <li data-transition="fade" data-slotamount="2" data-masterspeed="500" data-thumb="homeslider_thumb1.jpg"  data-saveperformance="on"  data-title="Intro Slide">
                                 <!-- MAIN IMAGE -->
-                                <img src="{{url('frontend/images/slides/2.jpg')}}"  alt="slidebg1" data-lazyload="{{url('images/slides/2.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                <img src="{{asset('frontend/images/slides/slider1.JPG')}}"  alt="slidebg1" data-lazyload="{{url('frontend/images/slides/slider1.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                                 <!-- LAYERS -->
                                 <div class="tp-caption customin fadeout tp-resizeme rs-parallaxlevel-10"
                                      data-x="center"
@@ -84,7 +84,7 @@
                             </li>
                             <li data-transition="fade" data-slotamount="2" data-masterspeed="500" data-thumb="homeslider_thumb1.jpg"  data-saveperformance="on"  data-title="Intro Slide">
                                 <!-- MAIN IMAGE -->
-                                <img src="{{asset('frontend/images/ns-bg.png')}}"  alt="slidebg1" data-lazyload="images/slides/1.jpg" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                <img src="{{asset('frontend/images/slides/slider2')}}"  alt="slidebg1" data-lazyload="{{url('frontend/images/slides/slider2.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
                                 <!-- LAYERS -->
                                 <div class="tp-caption customin fadeout tp-resizeme rs-parallaxlevel-10"
                                      data-x="center"

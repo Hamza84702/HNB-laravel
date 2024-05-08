@@ -34,39 +34,33 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        @foreach($products as $product)
+        <div class="modal fade" id="productModal{{$product->id}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
                     <div class="row">
                         <div class="col-md-5 col-sm-6">
                             <div class="owl-carousel sync1">
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/1.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/2.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/3.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/4.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/1.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/2.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/3.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/4.jpg')}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image1)}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image2)}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image3)}}" alt=""> </div>
                             </div>
 
                             <div class="owl-carousel sync2">
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/1.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/2.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/3.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/4.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/1.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/2.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/3.jpg')}}" alt=""> </div>
-                                <div class="item"> <img src="{{asset('frontend/images/products/single/4.jpg')}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image1)}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image2)}}" alt=""> </div>
+                                <div class="item"> <img src="{{asset('/uploads/products/'.$product->image3)}}" alt=""> </div> 
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-6">
                             <div class="product-single">
                                 <div class="ps-header">
-                                    <span class="badge offer">-50%</span>
-                                    <h3>Product fashion</h3>
+                                    @if($product->discount > 0)
+                                    <span class="badge offer">-{{$product->discount}}%</span>
+                                    @endif
+                                    <h2>{{$product->name}}</h2>
+                                    <h3>{{$product->title}}</h3>
                                     <div class="ratings-wrap">
                                         <div class="ratings">
                                             <span class="act fa fa-star"></span>
@@ -77,11 +71,14 @@
                                         </div>
                                         <em>(6 reviews)</em>
                                     </div>
-                                    <div class="ps-price"><span>$ 200.00</span> $ 99.00</div>
+                                    <div class="ps-price"> <span>
+                                    @if($product->discount > 0)${{$product->price}}@endif
+                                    </span> 
+                                    ${{ calculatediscount($product->price, $product->discount > 0 && $product->discount != null ? $product->discount : 0) }}</div>
                                 </div>
 
                                 <div class="ps-stock">
-                                    Available: <a href="#">In Stock</a>
+                                    Available: {{$product->qty}} <a href="#">In Stock</a>
                                 </div>
                                 <div class="sep"></div>
                                 <div class="ps-color">
@@ -132,7 +129,7 @@
                 </div>
             </div>
         </div>
-
+        @endforeach
         <div id="backtotop"><i class="fa fa-chevron-up"></i></div>
         @endsection
 

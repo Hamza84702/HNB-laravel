@@ -237,7 +237,7 @@
                                     <div class="product-item">
                                         <div class="item-thumb">
                                             <img src="{{asset('frontend/images/products/fashion/7.jpg')}}" class="img-responsive" alt=""/>
-                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target=""></div>
                                             <div class="product-overlay">
                                                 <a href="#" class="addcart fa fa-shopping-cart"></a>
                                                 <a href="#" class="compare fa fa-signal"></a>
