@@ -30,7 +30,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/redirect',[AdminController::class,'redirect'])->name('redirect');
+    Route::get('/dashboard',[AdminController::class,'redirect'])->name('redirect');
     
     Route::get('/category/add',[CategoryController::class,'addform'])->name('addform');
     Route::post('/store',[CategoryController::class,'store'])->name('category.store');

@@ -237,11 +237,16 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
                           <h5 class="card-title mt-3">Upload Image</h5>
                           <div class="el-element-overlay">
                             <div class="el-card-item">
-                              <div class="el-card-avatar el-overlay-1">
-                                <!-- <img
-                                  src="../../assets/images/gallery/chair3.jpg"
+                              <div class="el-card-avatar el-overlay-1" style="display: flex; justify-content: center; align-items: center;">
+                                <img
+                                  src="#"
                                   alt="user"
-                                /> -->
+                                  id="previewImage1"
+                                  alt="Preview Image"
+                                  style="display: none;"
+                                  height="150px"
+                                  width="100px"
+                                />
                                 <div class="el-overlay">
                                   <ul class="list-style-none el-info">
                                     <li class="el-item">
@@ -271,19 +276,24 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
                           </div>
                           <div class="btn btn-info waves-effect waves-light">
                             <span>Upload Images</span>
-                            <input type="file" class="upload" name="image1" multiple />
+                            <input type="file" class="upload" name="image1" accept="image/*" data-preview="previewImage1"/>
                         </div>
                         </div>
                       </div>
                       <div class="col-md-3">
-                          <h5 class="card-title mt-3">Upload Image (optional)</h5>
+                          <h5 class="card-title mt-3">Upload Image <sub>(optional)</sub></h5>
                           <div class="el-element-overlay">
                             <div class="el-card-item">
-                              <div class="el-card-avatar el-overlay-1">
-                                <!-- <img
-                                  src="../../assets/images/gallery/chair3.jpg"
+                              <div class="el-card-avatar el-overlay-1" style="display: flex; justify-content: center; align-items: center;">
+                                <img
+                                  src="#"
                                   alt="user"
-                                /> -->
+                                  id="previewImage2"
+                                  alt="Preview Image"
+                                  style="display: none;"
+                                  height="150px"
+                                  width="100px"
+                                />
                                 <div class="el-overlay">
                                   <ul class="list-style-none el-info">
                                     <li class="el-item">
@@ -313,19 +323,24 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
                           </div>
                           <div class="btn btn-info waves-effect waves-light">
                             <span>Upload Images</span>
-                            <input type="file" class="upload" name="image2" multiple />
+                            <input type="file" class="upload" name="image2" accept="image/*" data-preview="previewImage2" />
                         </div>
                         </div>
                       </div>
                       <div class="col-md-3">
-                          <h5 class="card-title mt-3">Upload Image (optional)</h5>
+                          <h5 class="card-title mt-3">Upload Image <sub>(optional)</sub></h5>
                           <div class="el-element-overlay">
                             <div class="el-card-item">
-                              <div class="el-card-avatar el-overlay-1">
-                                <!-- <img
-                                  src="../../assets/images/gallery/chair3.jpg"
+                              <div class="el-card-avatar el-overlay-1" style="display: flex; justify-content: center; align-items: center;">
+                                <img
+                                  src="#"
                                   alt="user"
-                                /> -->
+                                  id="previewImage3"
+                                  alt="Preview Image"
+                                  style="display: none;"
+                                  height="150px"
+                                  width="100px"
+                                />
                                 <div class="el-overlay">
                                   <ul class="list-style-none el-info">
                                     <li class="el-item">
@@ -355,7 +370,7 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
                           </div>
                           <div class="btn btn-info waves-effect waves-light">
                             <span>Upload Images</span>
-                            <input type="file" class="upload" name="image3" multiple />
+                            <input type="file" class="upload" name="image3" accept="image/*" data-preview="previewImage3" />
                         </div>
                         </div>
                       </div>
@@ -381,23 +396,6 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
             <!-- Column -->
           </div>
         </div>
-<!-- 
-
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#uploadForm').submit(function (e) {
-            var maxFiles = 3; // Maximum number of files allowed
-            var selectedFiles = $('.upload')[0].files;
-
-            if (selectedFiles.length > maxFiles) {
-                e.preventDefault(); // Prevent form submission
-                alert('You can upload a maximum of 3 images.');
-            }
-        });
-    });
-</script> -->
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -433,6 +431,33 @@ Lorem Ipsum available, but the majority have suffered alteration in some form, b
         updateDiscountedPrice();
     });
 </script>
+<script>
+  function previewImage(event,previewId){
+    const input = event.target;
+    const preview = document.getElementById(previewId);
+    if(input.files && input.files[0]){
+      const reader = new FileReader();
 
+      reader.onload = function(event){
+        preview.src = event.target.result;
+        preview.style.display = 'block'
+
+      };
+      reader.readAsDataURL(input.files[0])
+    }
+    else
+    {
+      preview.src = '#';
+      preview.style.display = 'none'
+    }
+  }
+
+  document.querySelectorAll('.upload').forEach(function (input) {
+    input.addEventListener('change', function (event) {
+      const previewId = input.dataset.preview;
+      previewImage(event, previewId);
+    });
+  });
+</script>
 
 @endsection

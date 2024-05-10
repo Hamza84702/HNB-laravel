@@ -11,7 +11,8 @@ class HomeController extends Controller
     {
         $products=Product::where('status','1')->latest()->get();
         $randproducts=Product::where('status','1')->inRandomOrder()->take(5)->get();
-        return view('frontend.home',compact('products','randproducts'));
+        $latestproducts=Product::where('status','1')->latest()->take(5)->get();
+        return view('frontend.home',compact('products','randproducts','latestproducts'));
         
     }
 }
