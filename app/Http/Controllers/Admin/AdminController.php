@@ -12,10 +12,14 @@ class AdminController extends Controller
     public function redirect()
     {
         $usertype= auth::user()->usertype;
-       if($usertype=='1')
-       {
-        return view('backend.dashboard');
-       }
+        if($usertype=='1')
+        {
+            return view('backend.dashboard');
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
     }
 
     public function logout()

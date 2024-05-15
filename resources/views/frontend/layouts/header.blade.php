@@ -19,29 +19,19 @@
                                     <span><i class="fa fa-shopping-cart"></i></span>
                                     <div class="cart-info">
                                         <small>You have <em class="highlight">3 item(s)</em> in your shopping bag</small>
+                                        @foreach($catProducts as $cart)
                                         <div class="ci-item">
-                                            <img src="{{asset('frontend/images/products/fashion/8.jpg')}}" width="80" alt=""/>
+                                            <img src="{{url('uploads/products/'.$cart->product->image1)}}" width="80" alt=""/>
                                             <div class="ci-item-info">
-                                                <h5><a href="./single-product.html">Product fashion</a></h5>
-                                                <p>2 x $250.00</p>
+                                                <h5><a href="./single-product.html">{{$cart->product->name}}</a></h5>
+                                                <p>{{$cart->qty}} x ${{calculatediscount($cart->product->price,$cart->product->discount)}}</p>
                                                 <div class="ci-edit">
                                                     <a href="#" class="edit fa fa-edit"></a>
-                                                    <a href="#" class="edit fa fa-trash"></a>
+                                                    <a href="#" class="edit destroy fa fa-trash" data-cart-id="{{$cart->id}}"></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="ci-item">
-                                            <img src="{{asset('frontend/images/products/fashion/15.jpg')}}" width="80" alt=""/>
-                                            <div class="ci-item-info">
-                                                <h5><a href="./single-product.html">Product fashion</a></h5>
-                                                <p>2 x $250.00</p>
-                                                <div class="ci-edit">
-                                                    <a href="#" class="edit fa fa-edit"></a>
-                                                    <a href="#" class="edit fa fa-trash"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        @endforeach
                                         <div class="ci-total">Subtotal: $750.00</div>
                                         <div class="cart-btn">
                                             <a href="#">View Bag</a>
@@ -184,3 +174,31 @@
                     </div>
                 </nav>
             </header>
+            @push('script')
+                <script>
+                    $('.destroy').click(function(e){
+                      
+                        e.preventDefault();
+                        
+                        var cartitem=$(this).data('cart-id')
+                         console.log("cart id is: ",cartitem);
+                        $.ajax({
+                            url:'{{route("deletecartitem")}}',
+                            method:"delete",
+                            data:{
+                                CartId:cartitem,
+                                _token:'{{ csrf_token() }}'
+                            },
+                            success:function(response){
+                                console.log("item is deleted")
+                                location.reload();
+                            },
+                            error:function(xhr){
+                                console.error('Error adding product to cart:', xhr.responseText);
+                            }
+
+
+                        });
+                    })
+                </script>
+            @endpush

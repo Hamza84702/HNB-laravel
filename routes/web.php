@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VariationTypeController;
 use App\Http\Controllers\Admin\ProductvariationController;
+use App\Http\Controllers\CartController;
 
 use App\Http\Controllers\HomeController;
 
@@ -62,6 +63,7 @@ Route::middleware([
 
 
 
+
 });
 Route::get('/shop',function(){
     return view('frontend.shop');
@@ -71,5 +73,11 @@ Route::get('/shop',function(){
 // Home routes
 Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/logout',[AdminController::class,'logout'])->name('logging.out');
+
+
+// Cart routes
+Route::post('/cart/add',[CartController::class,'addtocart'])->name('addtocart');
+Route::get('/cart/view',[CartController::class,'viewcart'])->name('viewcart');
+Route::delete('/cart/delete',[CartController::class,'destroy'])->name('deletecartitem');
 
 

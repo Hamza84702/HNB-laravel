@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="{{asset('frontend/plugin/owl-carousel/owl.carousel.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/plugin/owl-carousel/owl.theme.css')}}">
         <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -107,7 +108,7 @@
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="{{asset('frontend/js/vendors/select/jquery.selectBoxIt.min.js')}}"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
-
+@stack('script')
 
 </body>
 </html>
