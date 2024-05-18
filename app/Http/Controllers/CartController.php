@@ -33,6 +33,22 @@ class CartController extends Controller
 
     }
 
+
+    public function cartdetails(){
+        $id=auth::id();
+        if($id)
+        {
+            $catProducts=Cart::where('user_id',$id)->with('product')->get();
+           
+           return view('frontend.cartdetails',compact('catProducts'));
+        }
+    }
+
+    public function updatedcartdata(){
+        $cartdata= cartdata();
+        return response()->json(['cartdata'=>$cartdata, 200]);
+    }
+
     // public function viewcart(){
     //     $userid=auth::id();
     //     $cartProduct=Cart::where('user_id',$userid)->with('product')->get();

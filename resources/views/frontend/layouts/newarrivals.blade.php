@@ -77,6 +77,11 @@
             </div>
 
 <script>
+
+    function calculatediscount(price, discount) {
+            return discount > 0 ? Math.floor(price - (price * (discount / 100))) : price;
+        }
+
    $('.addcart').click(function(e) {
         e.preventDefault();
         var productId = $(this).data('product-id');
@@ -92,11 +97,44 @@
             },
             success:function(response){
                 console.log('Product added to cart successfuly');
+                updatedcartdata();
             },
             error: function(xhr) {
                 // Handle errors, e.g., display an error message
                 console.error('Error adding product to cart:', xhr.responseText);
             }
         });
-   })
+   });
+
+   function updatedcartdata(){
+        $.ajax({
+            url:"{{route('updatedcart')}}",
+            type:"GET",
+            success:function(response){
+            console.log("running");
+            var cartinfo=$('.cart-info');
+            cartinfo.html('');
+            console.log(response);
+            if(response.cartdata.length>0)
+            response.cartdata.forEach(function(cart){
+                
+                var cartitem=`
+                <div class="ci-item">
+                                <img src="{{ url('uploads/products/') }}/${cart.product.image1}" width="80" alt=""/>
+                                <div class="ci-item-info">
+                                    <h5><a href="./single-product.html">${cart.product.name}</a></h5>
+                                    <p>${cart.qty} x $${calculatediscount(cart.product.price,cart.product.discount)}</p>
+                                    <div class="ci-edit">
+                                        <a href="{{ route('cartdetailpage') }}" class="edit fa fa-edit"></a>
+                                        <a href="#" class="edit destroy fa fa-trash" data-cart-id="${cart.id}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                `;
+                cartinfo.append(cartitem);
+            });
+        }
+        });
+
+    }
 </script>

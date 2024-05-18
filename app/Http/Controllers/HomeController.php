@@ -13,8 +13,7 @@ class HomeController extends Controller
         $products=Product::where('status','1')->latest()->get();
         $randproducts=Product::where('status','1')->inRandomOrder()->take(5)->get();
         $latestproducts=Product::where('status','1')->latest()->take(5)->get();
-        $catProducts=$this->cartdata();
-        return view('frontend.home',compact('products','randproducts','latestproducts','catProducts'));
+        return view('frontend.home',compact('products','randproducts','latestproducts',));
 
 
         

@@ -21,7 +21,12 @@
                                                     <a href="my-account.html">My Account</a>
                                                     <a href="#">My Wishlist</a>
                                                     <a href="#">Checkout</a>
-                                                    <a href="login-page.html">Login</a>
+                                                    @if(Auth::user())
+                                                    <a href="{{route('userlogout')}}">Logout</a>
+
+                                                    @else
+                                                    <a href="{{route('redirect')}}">Login</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </li>

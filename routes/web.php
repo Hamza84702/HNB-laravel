@@ -49,14 +49,14 @@ Route::middleware([
     Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
     Route::post('/product/edit/{id}',[ProductController::class,'update'])->name('product.update');
 // variation type routes
-    Route::get('/type',[VariationTypeController::class,'add'])->name('type.add');
-    Route::post('/type',[VariationTypeController::class,'store'])->name('type.store');
-    Route::post('/type/update',[VariationTypeController::class,'update'])->name('type.update');
+    // Route::get('/type',[VariationTypeController::class,'add'])->name('type.add');
+    // Route::post('/type',[VariationTypeController::class,'store'])->name('type.store');
+    // Route::post('/type/update',[VariationTypeController::class,'update'])->name('type.update');
 
 // product variations routes
 
-    Route::get('/variation/add',[ProductvariationController::class,'add'])->name('variation.add');
-    Route::post('/variation/add',[ProductvariationController::class,'store'])->name('variation.store');
+    // Route::get('/variation/add',[ProductvariationController::class,'add'])->name('variation.add');
+    // Route::post('/variation/add',[ProductvariationController::class,'store'])->name('variation.store');
 
 
 
@@ -79,5 +79,10 @@ Route::get('/logout',[AdminController::class,'logout'])->name('logging.out');
 Route::post('/cart/add',[CartController::class,'addtocart'])->name('addtocart');
 Route::get('/cart/view',[CartController::class,'viewcart'])->name('viewcart');
 Route::delete('/cart/delete',[CartController::class,'destroy'])->name('deletecartitem');
+Route::get('/cart/details',[CartController::class,'cartdetails'])->name('cartdetailpage');
+Route::get('/cart/updated',[CartController::class,'updatedcartdata'])->name('updatedcart');
 
+
+//user login and register routes
+Route::get('/userlogout',[AdminController::class,'userlogout'])->name('userlogout');
 

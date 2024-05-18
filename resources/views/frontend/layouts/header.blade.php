@@ -18,7 +18,12 @@
                                 <div class="topcart">
                                     <span><i class="fa fa-shopping-cart"></i></span>
                                     <div class="cart-info">
+                                        @php
+                                        $catProducts=cartdata();
+                                        @endphp 
+                                       
                                         <small>You have <em class="highlight">3 item(s)</em> in your shopping bag</small>
+                                        @if($catProducts)
                                         @foreach($catProducts as $cart)
                                         <div class="ci-item">
                                             <img src="{{url('uploads/products/'.$cart->product->image1)}}" width="80" alt=""/>
@@ -26,17 +31,23 @@
                                                 <h5><a href="./single-product.html">{{$cart->product->name}}</a></h5>
                                                 <p>{{$cart->qty}} x ${{calculatediscount($cart->product->price,$cart->product->discount)}}</p>
                                                 <div class="ci-edit">
-                                                    <a href="#" class="edit fa fa-edit"></a>
+                                                    <a href="{{route('cartdetailpage')}}" class="edit fa fa-edit"></a>
                                                     <a href="#" class="edit destroy fa fa-trash" data-cart-id="{{$cart->id}}"></a>
                                                 </div>
                                             </div>
                                         </div>
                                         @endforeach
+                                        
                                         <div class="ci-total">Subtotal: $750.00</div>
                                         <div class="cart-btn">
-                                            <a href="#">View Bag</a>
+                                            <a href="{{route('cartdetailpage')}}">View Bag</a>
                                             <a href="#">Checkout</a>
                                         </div>
+                                        @else
+                                        <div style="display:flex; justify-content:center; align-item:center;">
+                                            Cart is empty.
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="topsearch">
@@ -51,16 +62,7 @@
                             <!-- Navmenu -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a href="./index.html" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">Home</a>
-                                        <ul class="dropdown-menu submenu" role="menu">
-                                            <li><a href="./index.html">Home - Style 1</a>
-                                            <li><a href="./index2.html">Home - Style 2</a>
-                                            <li><a href="./index3.html">Home - Style 3</a>
-                                            <li><a href="./index4.html">Home - Style 4</a>
-                                            <li><a href="./index5.html">Home - Style 5</a>
-                                        </ul>
-                                    </li>
+                                <li><a href="{{route('home')}}">Home</a>
                                     <li class="dropdown mmenu">
                                         <a href="./categories-grid.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Women</a>
                                         <ul class="mega-menu dropdown-menu" role="menu">
