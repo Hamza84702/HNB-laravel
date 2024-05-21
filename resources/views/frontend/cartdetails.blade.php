@@ -143,6 +143,7 @@
 		        </div>
 		        <div class="content">
 	 				<div class="row">
+						<!-- we use cartdata helper cartdata()-->
 						@php 
 							$cartproducts1=cartdata();
 						@endphp
@@ -188,7 +189,7 @@
 			 			<div class="col-md-12 col-lg-4">
 			 				<div class="summary">
 			 					<h3>Summary</h3>
-			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price">$360</span></div>
+			 					<div class="summary-item"><span class="text">Subtotal</span><span class="price">${{subtotal($cartproducts1)}}</span></div>
 			 					<div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
 			 					<div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
 			 					<div class="summary-item"><span class="text">Total</span><span class="price">$360</span></div>

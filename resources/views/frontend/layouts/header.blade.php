@@ -22,8 +22,8 @@
                                         $catProducts=cartdata();
                                         @endphp 
                                        
-                                        <small>You have <em class="highlight">3 item(s)</em> in your shopping bag</small>
-                                        @if($catProducts)
+                                        <small>You have <em class="highlight">{{$catProducts ? count($catProducts) : 0}} item(s)</em> in your shopping bag</small>
+                                        @if($catProducts && count($catProducts)>0)
                                         @foreach($catProducts as $cart)
                                         <div class="ci-item">
                                             <img src="{{url('uploads/products/'.$cart->product->image1)}}" width="80" alt=""/>
@@ -37,15 +37,18 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                        
-                                        <div class="ci-total">Subtotal: $750.00</div>
+                                        <div class="ci-total">Subtotal: ${{subtotal($catProducts)}}</div>
                                         <div class="cart-btn">
                                             <a href="{{route('cartdetailpage')}}">View Bag</a>
                                             <a href="#">Checkout</a>
                                         </div>
                                         @else
                                         <div style="display:flex; justify-content:center; align-item:center;">
-                                            Cart is empty.
+                                            <img src="{{url('frontend\images\emptycart.JPG')}}" alt="cart is empty" width="180px" height="200px">             
+                                        </div>
+                                        <div style="text-align:center; margin-top:10px;">
+                                            <h5 style="color:#d6644a;">Your cart is empty.</h5>
+                                            <p>Add something to make me happy:)</p>
                                         </div>
                                         @endif
                                     </div>
@@ -70,45 +73,21 @@
                                                 <div>
                                                     <h5>Sample Title</h5>
                                                     <a href="#">Nam ipsum est</a>
-                                                    <a href="#">Volutpat</a>
-                                                    <a href="#">In efficitur in</a>
-                                                    <a href="#">Accumsan eget <span class="mm-badge-sale">Sale</span></a>
-                                                    <a href="#">Odio</a>
-                                                    <a href="#">Curabitur</a>
-                                                    <a href="#">Phasellus <span class="mm-badge-new">New</span></a>
-                                                    <a href="#">Dapibus elit</a>
-                                                    <a href="#">Nurna ullamcorper</a>
-                                                    <a href="#">Lobortis</a>
+                                                   
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
                                                     <h5>Sample Title</h5>
                                                     <a href="#">Nam ipsum est</a>
-                                                    <a href="#">Volutpat</a>
-                                                    <a href="#">In efficitur in</a>
-                                                    <a href="#">Accumsan eget</a>
-                                                    <a href="#">Odio</a>
-                                                    <a href="#">Curabitur</a>
-                                                    <a href="#">Phasellus</a>
-                                                    <a href="#">Dapibus elit</a>
-                                                    <a href="#">Nurna ullamcorper</a>
-                                                    <a href="#">Lobortis</a>
+                                                   
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
                                                     <h5>Sample Title</h5>
                                                     <a href="#">Nam ipsum est</a>
-                                                    <a href="#">Volutpat</a>
-                                                    <a href="#">In efficitur in</a>
-                                                    <a href="#">Accumsan eget</a>
-                                                    <a href="#">Odio</a>
-                                                    <a href="#">Curabitur</a>
-                                                    <a href="#">Phasellus</a>
-                                                    <a href="#">Dapibus elit</a>
-                                                    <a href="#">Nurna ullamcorper</a>
-                                                    <a href="#">Lobortis</a>
+                                                   
                                                 </div>
                                             </li>
                                         </ul>
@@ -128,46 +107,21 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Get inspired</a>
                                         <ul class="dropdown-menu submenu" role="menu">
                                             <li><a href="#">Nam ipsum est</a>
-                                            <li><a href="#">Volutpat</a>
-                                            <li><a href="#">In efficitur in</a></li>
-                                            <li><a href="#">Accumsan eget</a></li>
-                                            <li><a href="#">Odio</a></li>
-                                            <li><a href="#">Curabitur</a></li>
-                                            <li><a href="#">Phasellus</a></li>
-                                            <li><a href="#">Dapibus elit</a></li>
-                                            <li><a href="#">Nurna ullamcorper</a></li>
-                                            <li><a href="#">Lobortis</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Technology</a>
                                         <ul class="dropdown-menu submenu" role="menu">
                                             <li><a href="#">Nam ipsum est</a>
-                                            <li><a href="#">Volutpat</a>
-                                            <li><a href="#">In efficitur in</a></li>
-                                            <li><a href="#">Accumsan eget</a></li>
-                                            <li><a href="#">Odio</a></li>
-                                            <li><a href="#">Curabitur</a></li>
-                                            <li><a href="#">Phasellus</a></li>
-                                            <li><a href="#">Dapibus elit</a></li>
-                                            <li><a href="#">Nurna ullamcorper</a></li>
-                                            <li><a href="#">Lobortis</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Pages</a>
                                         <ul class="dropdown-menu submenu" role="menu">                                         
                                             <li><a href="contact-1.html">Contact Style 1</a></li>
-                                            <li><a href="contact-2.html">Contact Style 2</a></li>
-                                            <li><a href="account-information.html"> Account Information </a></li>
-                                            <li><a href="my-account.html">My Account</a></li>                                        
-                                            <li><a href="cng-pw.html">Change Password</a></li>
-                                            <li><a href="address-book.html">Address Books</a></li>
-                                            <li><a href="order-history.html">Order History</a></li>
-                                            <li><a href="review-rating.html">Reviews and Ratings</a></li>
-                                            <li><a href="return.html">Returns Requests</a></li>
-                                            <li><a href="newsletter.html">Newsletter</a></li>
-                                            <li><a href="myaccount-leftsidebar.html">Left Sidebar</a></li>
+                                          
                                         </ul>
                                     </li>
                                 </ul>
@@ -176,31 +130,39 @@
                     </div>
                 </nav>
             </header>
-            @push('script')
-                <script>
-                    $('.destroy').click(function(e){
-                      
-                        e.preventDefault();
-                        
-                        var cartitem=$(this).data('cart-id')
-                         console.log("cart id is: ",cartitem);
-                        $.ajax({
-                            url:'{{route("deletecartitem")}}',
-                            method:"delete",
-                            data:{
-                                CartId:cartitem,
-                                _token:'{{ csrf_token() }}'
-                            },
-                            success:function(response){
-                                console.log("item is deleted")
-                                location.reload();
-                            },
-                            error:function(xhr){
-                                console.error('Error adding product to cart:', xhr.responseText);
-                            }
+        
+            <script>
+    $(document).ready(function() {
+        attachDeleteHandlers();
+    });
 
 
-                        });
-                    })
-                </script>
-            @endpush
+    function calculatediscount(price, discount) {
+            return discount > 0 ? Math.floor(price - (price * (discount / 100))) : price;
+        }
+
+  
+   
+    function attachDeleteHandlers() {
+    $('.destroy').off('click').on('click', function(e) {
+        e.preventDefault();
+        var cartitem = $(this).data('cart-id');
+        console.log("cart id is: ", cartitem);
+        $.ajax({
+            url: '{{ route("deletecartitem") }}',
+            method: "DELETE",
+            data: {
+                CartId: cartitem,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                console.log("Item is deleted");
+                updatedcartdata();
+            },
+            error: function(xhr) {
+                console.error('Error deleting product from cart:', xhr.responseText);
+            }
+        });
+    });
+}
+</script>

@@ -9,7 +9,7 @@ if (!function_exists('calculatediscount')) {
     }
 
 }
-//helper
+
 if (!function_exists('cartdata')) {
     function cartdata(){
         $userId=auth::id();
@@ -18,4 +18,16 @@ if (!function_exists('cartdata')) {
             return $cartProducts;
         }
     }
+}
+
+function subtotal($data){
+    $subtotal=0;
+    foreach($data as $cartproduct){
+        //use helper funcion calculatediscount
+        $discountprice = calculatediscount($cartproduct->product->price,$cartproduct->product->discount);
+        $subtotal += $discountprice *  $cartproduct->qty;
+       
+    }
+    return $subtotal;
+
 }

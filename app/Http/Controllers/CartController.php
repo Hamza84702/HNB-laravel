@@ -45,8 +45,9 @@ class CartController extends Controller
     }
 
     public function updatedcartdata(){
-        $cartdata= cartdata();
-        return response()->json(['cartdata'=>$cartdata, 200]);
+        $cartdata = cartdata();
+        $subtotal=subtotal($cartdata);
+        return response()->json(['cartdata'=>$cartdata,'subtotal'=>$subtotal,'itemCount' => $cartdata->count(), 200]);
     }
 
     // public function viewcart(){
