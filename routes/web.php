@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VariationTypeController;
 use App\Http\Controllers\Admin\ProductvariationController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 use App\Http\Controllers\HomeController;
 
@@ -82,7 +83,15 @@ Route::delete('/cart/delete',[CartController::class,'destroy'])->name('deletecar
 Route::get('/cart/details',[CartController::class,'cartdetails'])->name('cartdetailpage');
 Route::get('/cart/updated',[CartController::class,'updatedcartdata'])->name('updatedcart');
 
+// Checkout routes
+// Route::get('/checkout',[CheckoutController::class,'checkoutpage'])->name('checkout');
+Route::post('/checkout/order',[CartController::class,'order'])->name('placeorder');
+
 
 //user login and register routes
 Route::get('/userlogout',[AdminController::class,'userlogout'])->name('userlogout');
 
+Route::controller(CheckoutController::class)->group(function(){
+    Route::get('stripe', 'stripe')->name('stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});

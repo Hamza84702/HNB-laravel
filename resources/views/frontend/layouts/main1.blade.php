@@ -64,9 +64,11 @@
 
 
             <!-- BLOCKS WRAP -->
-           
+           <div style="margin-bottom:20px;">
+
+           </div>
             <!-- FOOTER WIDGETS -->
-            @include('frontend.layouts.footerwidgets')
+           
             
             <!-- FOOTER -->
             @include('frontend.layouts.footer')

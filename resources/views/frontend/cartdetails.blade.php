@@ -193,7 +193,9 @@
 			 					<div class="summary-item"><span class="text">Discount</span><span class="price">$0</span></div>
 			 					<div class="summary-item"><span class="text">Shipping</span><span class="price">$0</span></div>
 			 					<div class="summary-item"><span class="text">Total</span><span class="price">$360</span></div>
-			 					<button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
+								<div class="my-4">
+			 					<a href="{{route('stripe')}}" style="color:white;" class="btn btn-primary btn-lg btn-block">Checkout</a>
+								</div>
 				 			</div>
 			 			</div>
 		 			</div> 

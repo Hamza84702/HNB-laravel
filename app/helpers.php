@@ -20,6 +20,11 @@ if (!function_exists('cartdata')) {
     }
 }
 
+function calculatetotaldiscount($price, $discountPercentage) {
+    $calculatetotaldiscount=floor($price * $discountPercentage / 100);
+    return $calculatetotaldiscount;
+}
+
 function subtotal($data){
     $subtotal=0;
     foreach($data as $cartproduct){

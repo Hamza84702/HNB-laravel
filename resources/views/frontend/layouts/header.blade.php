@@ -40,7 +40,7 @@
                                         <div class="ci-total">Subtotal: ${{subtotal($catProducts)}}</div>
                                         <div class="cart-btn">
                                             <a href="{{route('cartdetailpage')}}">View Bag</a>
-                                            <a href="#">Checkout</a>
+                                            <a href="{{route('stripe')}}">Checkout</a>
                                         </div>
                                         @else
                                         <div style="display:flex; justify-content:center; align-item:center;">
