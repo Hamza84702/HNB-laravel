@@ -141,7 +141,7 @@ function updatedcartdata(){
             cartinfo.append(`
                             <div class="cart-btn">
                                 <a href="{{route('cartdetailpage')}}">View Bag</a>
-                                <a href="#">Checkout</a>
+                                <a href="{{route('stripe')}}">Checkout</a>
                             </div>
             `);
             attachDeleteHandlers();

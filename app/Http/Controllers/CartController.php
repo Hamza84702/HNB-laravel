@@ -10,18 +10,23 @@ use Auth;
 class CartController extends Controller
 {
     public function addtocart(request $request){
-
-        if(auth::user()->id)
-        {
-            $data=array(
-                'user_id'=>auth::user()->id,
-                'product_id'=>$request->product_id,
-                'qty'=>$request->quantity
-            );
-    
-            Cart::create($data);
-            return response()->json(['success' => true, 'message'=>"Product added to cart successfull"]);
+        try {
+            if(auth::user()->id)
+            {
+                $data=array(
+                    'user_id'=>auth::user()->id,
+                    'product_id'=>$request->product_id,
+                    'qty'=>$request->quantity
+                );
+        
+                Cart::create($data);
+                return response()->json(['success' => true, 'message'=>"Product added to cart successfull"]);
+            }
+        } catch (\Throwable $th) {
+            return response()->json(['success' => false, 'message'=>$th]);
+            
         }
+       
     }
 
 

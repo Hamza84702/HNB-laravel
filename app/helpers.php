@@ -25,6 +25,7 @@ function calculatetotaldiscount($price, $discountPercentage) {
     return $calculatetotaldiscount;
 }
 
+//we calculate subtotal there and the $data is an object that we pass and itrate in the loop to get the prices.
 function subtotal($data){
     $subtotal=0;
     foreach($data as $cartproduct){

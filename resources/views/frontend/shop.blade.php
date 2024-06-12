@@ -514,4 +514,94 @@
 
 
 		<!-- Javascript -->
+        <script>
+            function calculatediscount(price, discount) {
+        return discount > 0 ? Math.floor(price - (price * (discount / 100))) : price;
+    }
+    $('.addcart').click(function(e) {
+        e.preventDefault();
+        var productId = $(this).data('product-id');
+        var quantity = 1;
+        console.log(productId);
+        $.ajax({
+            url: "{{ route('addtocart') }}",
+            type: "POST",
+            data: {
+                product_id: productId,
+                quantity: quantity,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                console.log('Product added to cart successfully');
+                updatedcartdata();
+            },
+            error: function(xhr) {
+                // Handle errors, e.g., display an error message
+                console.error('Error adding product to cart:', xhr.responseText);
+            }
+        });
+    });
+
+function updatedcartdata(){
+    $.ajax({
+        url:"{{route('updatedcart')}}",
+        type:"GET",
+        success:function(response){
+        console.log("running");
+        var cartinfo=$('.cart-info');
+        cartinfo.html('');
+        console.log(response);
+        if(response.cartdata.length>0)
+            {
+                cartinfo.append(`<small>You have <em class="highlight">${response.itemCount} item(s)</em> in your shopping bag</small>`);
+            response.cartdata.forEach(function(cart){
+                
+                var cartitem=`
+                <div class="ci-item">
+                                <img src="{{ url('uploads/products/') }}/${cart.product.image1}" width="80" alt=""/>
+                                <div class="ci-item-info">
+                                    <h5><a href="./single-product.html">${cart.product.name}</a></h5>
+                                    <p>${cart.qty} x $${calculatediscount(cart.product.price,cart.product.discount)}</p>
+                                    <div class="ci-edit">
+                                        <a href="{{ route('cartdetailpage') }}" class="edit fa fa-edit"></a>
+                                        <a href="#" class="edit destroy fa fa-trash" data-cart-id="${cart.id}"></a>
+                                    </div>
+                                </div>
+                            </div>
+                `;
+                cartinfo.append(cartitem);
+                
+            });
+            cartinfo.append(`<div class="ci-total">Subtotal: $${response.subtotal}</div>`);
+            cartinfo.append(`
+                            <div class="cart-btn">
+                                <a href="{{route('cartdetailpage')}}">View Bag</a>
+                                <a href="#">Checkout</a>
+                            </div>
+            `);
+            attachDeleteHandlers();
+        }else
+        {
+            cartinfo.append(
+                `   <small>You have <em class="highlight">0 item(s)</em> in your shopping bag</small>
+                        <div style="display:flex; justify-content:center; align-item:center;">
+                            <img src="{{url('frontend/images/emptycart.JPG')}}" alt="cart is empty" width="180px" height="200px">             
+                        </div>
+                        <div style="text-align:center; margin-top:10px;">
+                            <h5 style="color:#d6644a;">Your cart is empty.</h5>
+                            <p>Add something to make me happy:)</p>
+                        </div>
+                `
+            );
+        }
+    }
+});
+
+}
+
+$(document).ready(function() {
+    attachDeleteHandlers();
+});
+
+        </script>
 @endsection
