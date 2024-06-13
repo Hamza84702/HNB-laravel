@@ -80,17 +80,17 @@
                                 <div class="ps-stock">
                                     Available: {{$product->qty}} <a href="#">In Stock</a>
                                 </div>
-                                <div class="sep"></div>
-                                <div class="ps-color">
+                                <!-- <div class="sep"></div> -->
+                                <!-- <div class="ps-color">
                                     <p>Color<span>*</span></p>
                                     <a class="black" href="#" onclick="return false;"></a>
                                     <a class="red" href="#" onclick="return false;"></a>
                                     <a class="yellow" href="#" onclick="return false;"></a>
                                     <a class="darkgrey" href="#" onclick="return false;"></a>
                                     <a class="litebrown" href="#" onclick="return false;"></a>
-                                </div>
+                                </div> -->
                                 <div class="space10"></div>
-                                <div class="row select-wraps">
+                                <!-- <div class="row select-wraps">
                                     <div class="col-md-7 col-sm-7">
                                         <p>Size<span>*</span></p>
                                         <select>
@@ -109,7 +109,7 @@
                                             <option>5</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="space20"></div>
                                 <div class="share">
                                     <span>

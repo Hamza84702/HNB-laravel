@@ -11,7 +11,7 @@
                                     <div class="product-item">
                                         <div class="item-thumb">
                                             <img src="{{url('uploads/products/'.$product->image1)}}"  class="img-responsive equal-image" alt=""/>
-                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#productModal{{$product->id}}"></div>
                                             <div class="product-overlay">
                                                 <a href="#" class="addcart fa fa-shopping-cart" data-product-id="{{$product->id}}"></a>
                                                 <a href="#" class="compare fa fa-signal"></a>
@@ -45,7 +45,7 @@
                                     <div class="product-item">
                                         <div class="item-thumb">
                                             <img src="{{url('uploads/products/'.$random->image1)}}" class="img-responsive" alt=""/>
-                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#myModal"></div>
+                                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal" data-target="#productModal{{$random->id}}"></div>
                                             <div class="product-overlay">
                                             <a href="#" class="addcart fa fa-shopping-cart" data-product-id="{{$random->id}}"></a>
                                                 <a href="#" class="compare fa fa-signal"></a>
@@ -75,7 +75,7 @@
                     
                 </div>
             </div>
-            
+         
     <script>
    
 

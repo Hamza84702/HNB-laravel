@@ -18,11 +18,11 @@
                                     <div class="product-info">
                                         <h4 class="product-title"><a href="./single-product.html">{{$latest->name}}</a></h4>
                                         <span class="product-price">${{$latest->price}} <em>- Pre order</em></span>
-                                        <div class="item-colors">
+                                        <!-- <div class="item-colors">
                                             <a href="#" class="brown"></a>
                                             <a href="#" class="white"></a>
                                             <a href="#" class="litebrown"></a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
